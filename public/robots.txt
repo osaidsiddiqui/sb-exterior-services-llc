@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Crawl-delay: 1
+
+Sitemap: https://jaysezjunkremoval.com/sitemap.xml
+
+# Block access to admin or private areas (if any exist in future)
+Disallow: /admin/
+Disallow: /private/
