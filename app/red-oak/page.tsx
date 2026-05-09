@@ -1,4 +1,3 @@
-import { ContactForm } from "@/components/ContactForm"
 import { About } from "@/components/About"
 import { ServicesSection } from "./Rservices"
 import { Header } from "@/components/Header"
@@ -10,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Phone } from "lucide-react"
 import Link from "next/link"
+import { ContactForm } from "@/components/ContactForm"
 export const metadata: Metadata = {
   title: "Junk Removal Red Oak TX | Same-Day Service | Jay's EZ Junk Removal",
   description:
@@ -170,6 +170,8 @@ const redOakJsonLd = {
     ],
   },
 }
+
+export const revalidate = 0
 
 const RedOak = () => {
   return (

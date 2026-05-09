@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://sbexteriorservices.com/gallery" },
 }
 
+export const revalidate = 0
+
 export default function GalleryPage() {
   const galleryItems = [
     { src: "https://cdn.builder.io/api/v1/image/assets%2F306a1616036f465a99fac4fefda23c7d%2F6cd5cfd77e224857ae1fa098d97fd3b3", alt: "House washing result", service: "House Washing", location: "Central Florida" },

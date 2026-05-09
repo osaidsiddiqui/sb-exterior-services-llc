@@ -1,11 +1,11 @@
-import { ContactForm } from "@/components/ContactForm"
 import { Header } from "@/components/Header"
 import Footer from "@/components/Footer"
+import { ContactForm } from "@/components/ContactForm"
 import { CTASection } from "@/components/cta-section"
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowRight, Home, Roof, Zap, Droplets, Wind, Building2 } from "lucide-react"
+import { ArrowRight, Home, Home as Roof, Zap, Droplets, Wind, Building2 } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Exterior Cleaning Services | SB Exterior Services LLC",
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     url: "https://sbexteriorservices.com/services",
   },
 }
+
+export const revalidate = 0
 
 export default function ServicesPage() {
   const services = [

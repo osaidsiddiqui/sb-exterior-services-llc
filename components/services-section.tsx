@@ -1,12 +1,12 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { 
-  Home, 
-  Roof, 
-  Zap, 
-  Droplets, 
-  Wind, 
+import {
+  Home,
+  Home as Roof,
+  Zap,
+  Droplets,
+  Wind,
   Building2,
   ArrowRight
 } from "lucide-react"
