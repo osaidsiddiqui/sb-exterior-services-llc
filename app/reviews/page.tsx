@@ -15,6 +15,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://sbexteriorservices.com/reviews" },
 }
 
+export const revalidate = 0
+
 export default function ReviewsPage() {
   const reviews = [
     {

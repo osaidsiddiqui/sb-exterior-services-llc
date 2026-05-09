@@ -1,4 +1,3 @@
-import { ContactForm } from "@/components/ContactForm"
 import { About } from "@/components/About"
 import { ServicesSection } from "./Wservices"
 import { Header } from "@/components/Header"
@@ -10,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Phone } from "lucide-react"
 import Link from "next/link"
+import { ContactForm } from "@/components/ContactForm"
 export const metadata: Metadata = {
   title: "Junk Removal Waxahachie TX | Same-Day Service | Jay's EZ Junk Removal",
   description:
@@ -174,6 +174,8 @@ const waxahachieJsonLd = {
     ],
   },
 }
+
+export const revalidate = 0
 
 const Waxahachie = () => {
   return (

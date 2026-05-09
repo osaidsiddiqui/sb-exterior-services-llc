@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://sbexteriorservices.com/contact" },
 }
 
+export const revalidate = 0
+
 export default function ContactPage() {
   return (
     <div className="bg-[#0A0F1C] text-white min-h-screen">

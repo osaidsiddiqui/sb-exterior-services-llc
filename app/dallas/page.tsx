@@ -1,4 +1,3 @@
-import { ContactForm } from "@/components/ContactForm"
 import { About } from "@/components/About"
 import { CallToAction } from "@/components/CTAsection"
 import { ServicesSection } from "./Dservices"
@@ -8,6 +7,7 @@ import { HeroSectionDallas } from "./Dherosection"
 import Footer from "@/components/Footer"
 import type { Metadata } from "next"
 import { TestimonialsSection } from "@/components/testimonials-section"
+import { ContactForm } from "@/components/ContactForm"
 
 export const metadata: Metadata = {
   title: "Junk Removal Services in Dallas TX | Jay's EZ Junk Removal",
@@ -174,6 +174,8 @@ const dallasJsonLd = {
     ],
   },
 }
+
+export const revalidate = 0
 
 const Dallas = () => {
   return (

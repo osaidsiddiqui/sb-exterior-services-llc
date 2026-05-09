@@ -1,4 +1,3 @@
-import { ContactForm } from "@/components/ContactForm"
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { GallerySection } from "@/components/gallery-section"
@@ -7,6 +6,7 @@ import { AreasSection } from "@/components/areas-section"
 import { CTASection } from "@/components/cta-section"
 import { Header } from "@/components/Header"
 import Footer from "@/components/Footer"
+import { ContactForm } from "@/components/ContactForm"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -46,6 +46,9 @@ export const metadata: Metadata = {
     canonical: "https://sbexteriorservices.com",
   },
 }
+
+export const revalidate = 0
+
 export default function HomePage() {
   return (
     <div className="bg-[#0A0F1C] text-white min-h-screen">
