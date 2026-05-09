@@ -5,7 +5,8 @@ import { CTASection } from "@/components/cta-section"
 import type { Metadata } from "next"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { ArrowRight, Home, Home as Roof, Zap, Droplets, Wind, Building2 } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "Exterior Cleaning Services | SB Exterior Services LLC",
@@ -34,7 +35,7 @@ export default function ServicesPage() {
   const services = [
     {
       id: "house-washing",
-      icon: Home,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F022f181167c044d5929b1a16f44e2c53?format=webp&width=600",
       title: "House Washing",
       description: "Your home's exterior takes a beating from Florida's heat, humidity, and storms. We use professional soft washing techniques to safely remove mold, mildew, algae, dirt, and stains from any surface type.",
       benefits: [
@@ -47,7 +48,7 @@ export default function ServicesPage() {
     },
     {
       id: "roof-cleaning",
-      icon: Roof,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F0fa35f12504748d8a1ab979e905ac122?format=webp&width=600",
       title: "Roof Cleaning & Soft Washing",
       description: "Black streaks and algae growth (Gloeocapsa Magma) don't just look bad — they shorten your roof's lifespan. Our low-pressure soft washing safely removes organic growth without voiding your warranty.",
       benefits: [
@@ -60,7 +61,7 @@ export default function ServicesPage() {
     },
     {
       id: "driveway",
-      icon: Zap,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2Ffa511db8b16b4b31a71653bdb75b9ada?format=webp&width=600",
       title: "Driveway & Concrete Cleaning",
       description: "Oil stains, tire marks, and years of grime don't stand a chance. Our high-pressure concrete cleaning restores your driveway, walkways, and pool decks to like-new condition.",
       benefits: [
@@ -72,7 +73,7 @@ export default function ServicesPage() {
     },
     {
       id: "gutter",
-      icon: Droplets,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2Fb0062be4037948a49ab74ad496c952f9?format=webp&width=600",
       title: "Gutter Cleaning",
       description: "Clogged gutters can cause serious water damage to your home's foundation, fascia, and landscaping. We clear all debris and flush your gutters to ensure proper water flow.",
       benefits: [
@@ -84,7 +85,7 @@ export default function ServicesPage() {
     },
     {
       id: "soft-wash",
-      icon: Wind,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F63defebf55fb481681b92eb20617ab70?format=webp&width=600",
       title: "Soft Washing",
       description: "Some surfaces are too delicate for high-pressure washing. Our soft washing system uses a low-pressure spray combined with biodegradable cleaning solutions to safely clean and sanitize.",
       benefits: [
@@ -96,7 +97,7 @@ export default function ServicesPage() {
     },
     {
       id: "commercial",
-      icon: Building2,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F5dab30da66074737876dd121a8295f8c?format=webp&width=600",
       title: "Commercial Exterior Cleaning",
       description: "First impressions matter for your business. We provide professional cleaning services for storefronts, parking lots, building exteriors, and commercial properties across Central Florida.",
       benefits: [
@@ -131,15 +132,20 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="space-y-24">
             {services.map((service, index) => {
-              const IconComponent = service.icon
               const isEven = index % 2 === 0
 
               return (
                 <div key={service.id} className={`grid lg:grid-cols-2 gap-12 items-center ${isEven ? "" : "lg:grid-flow-dense"}`}>
-                  {/* Icon/Image */}
+                  {/* Image */}
                   <div className={`flex justify-center ${isEven ? "" : "lg:col-start-2"}`}>
-                    <div className="bg-[#1A2235] border border-[#3AAA35]/20 rounded-lg p-12 w-full max-w-sm aspect-square flex items-center justify-center">
-                      <IconComponent className="w-32 h-32 text-[#3AAA35] opacity-50" />
+                    <div className="bg-[#1A2235] border border-[#3AAA35]/20 rounded-lg overflow-hidden w-full max-w-sm aspect-square relative">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (min-width: 768px) 50vw"
+                      />
                     </div>
                   </div>
 

@@ -1,5 +1,6 @@
 "use client"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Phone, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useState } from "react"
@@ -40,6 +41,7 @@ const SBLogo = () => (
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -49,6 +51,11 @@ export const Header = () => {
     { name: "Reviews", href: "/reviews" },
     { name: "Contact", href: "/contact" },
   ]
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-[#0A0F1C]/95 backdrop-blur border-b border-[#3AAA35]/20">
@@ -71,7 +78,11 @@ export const Header = () => {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-white hover:text-[#3AAA35] transition-colors font-['Barlow'] font-500 text-sm"
+                className={`transition-colors font-['Barlow'] font-500 text-sm ${
+                  isActive(link.href)
+                    ? "text-[#3AAA35]"
+                    : "text-white hover:text-[#3AAA35]"
+                }`}
               >
                 {link.name}
               </Link>
@@ -116,7 +127,11 @@ export const Header = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="text-white hover:text-[#3AAA35] transition-colors font-['Barlow'] text-sm py-2"
+                  className={`transition-colors font-['Barlow'] text-sm py-2 ${
+                    isActive(link.href)
+                      ? "text-[#3AAA35]"
+                      : "text-white hover:text-[#3AAA35]"
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}

@@ -1,45 +1,38 @@
 "use client"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import {
-  Home,
-  Home as Roof,
-  Zap,
-  Droplets,
-  Wind,
-  Building2,
-  ArrowRight
-} from "lucide-react"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 
 export function ServicesSection() {
   const services = [
     {
-      icon: Home,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F022f181167c044d5929b1a16f44e2c53?format=webp&width=400",
       title: "House Washing",
       desc: "Remove mold, mildew & algae from your home's exterior. Safe for siding, brick & stucco.",
     },
     {
-      icon: Roof,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F0fa35f12504748d8a1ab979e905ac122?format=webp&width=400",
       title: "Roof Cleaning",
       desc: "Gentle soft washing extends your roof's life and restores curb appeal without damage.",
     },
     {
-      icon: Zap,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2Ffa511db8b16b4b31a71653bdb75b9ada?format=webp&width=400",
       title: "Driveway & Concrete",
       desc: "High-pressure cleaning removes oil stains, dirt & grime from driveways and walkways.",
     },
     {
-      icon: Droplets,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2Fb0062be4037948a49ab74ad496c952f9?format=webp&width=400",
       title: "Gutter Cleaning",
       desc: "Clear out debris and blockages to protect your home from water damage.",
     },
     {
-      icon: Wind,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F63defebf55fb481681b92eb20617ab70?format=webp&width=400",
       title: "Soft Washing",
       desc: "Low-pressure deep cleaning safe for delicate surfaces: screens, painted wood, EIFS.",
     },
     {
-      icon: Building2,
+      image: "https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2F5dab30da66074737876dd121a8295f8c?format=webp&width=400",
       title: "Commercial Cleaning",
       desc: "Storefronts, parking lots, and building exteriors — we handle commercial jobs too.",
     },
@@ -66,16 +59,21 @@ export function ServicesSection() {
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
-            const IconComponent = service.icon
             return (
               <Card
                 key={index}
-                className="bg-[#1A2235] border-[#3AAA35]/15 hover:border-[#3AAA35]/40 transition-all duration-300 hover:-translate-y-1 group"
+                className="bg-[#1A2235] border-[#3AAA35]/15 hover:border-[#3AAA35]/40 transition-all duration-300 hover:-translate-y-1 group overflow-hidden"
               >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, (min-width: 768px) 50vw"
+                  />
+                </div>
                 <CardContent className="p-8">
-                  <div className="mb-6">
-                    <IconComponent className="w-12 h-12 text-[#3AAA35] group-hover:text-[#4DC447] transition-colors" />
-                  </div>
                   <h3 className="font-['Bebas_Neue'] text-xl text-white mb-3 tracking-wide group-hover:text-[#3AAA35] transition-colors">
                     {service.title}
                   </h3>
