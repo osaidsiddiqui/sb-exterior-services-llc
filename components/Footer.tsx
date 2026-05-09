@@ -3,13 +3,8 @@
 import React from "react"
 import Link from "next/link"
 import { Facebook } from "lucide-react"
+import { FaTiktok } from "react-icons/fa"
 import Image from "next/image"
-
-const TikTokIcon = () => (
-  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.08 1.61 2.89 2.89 0 0 1 4.51-2.86v-3.54a6.47 6.47 0 0 0-5.07 2.32 6.48 6.48 0 0 0 9.56 8.72 6.45 6.45 0 0 0 1.94-4.75h-3.45a2.87 2.87 0 0 1-.55 1.64Z"/>
-  </svg>
-)
 
 const Footer = () => {
   return (
@@ -85,7 +80,7 @@ const Footer = () => {
                 className="text-[#3AAA35] hover:text-white transition-colors"
                 aria-label="TikTok"
               >
-                <TikTokIcon />
+                <FaTiktok className="w-5 h-5" />
               </a>
             </div>
           </div>
