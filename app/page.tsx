@@ -7,6 +7,7 @@ import { CTASection } from "@/components/cta-section"
 import { Header } from "@/components/Header"
 import Footer from "@/components/Footer"
 import { ContactForm } from "@/components/ContactForm"
+import { StatCard } from "@/components/stat-card"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -71,24 +72,13 @@ function StatsSection() {
     <section className="bg-[#111827] py-12 border-b border-[#3AAA35]/20">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <StatCard value="100+" label="Jobs Completed" />
-          <StatCard value="5★" label="Average Rating" />
-          <StatCard value="3+" label="Years Experience" />
-          <StatCard value="100%" label="Insured & Licensed" />
+          <StatCard end={100} label="Jobs Completed" />
+          <StatCard end={5} label="Average Rating" suffix="★" />
+          <StatCard end={3} label="Years Experience" suffix="+" />
+          <StatCard end={100} label="Insured & Licensed" suffix="%" />
         </div>
       </div>
     </section>
-  )
-}
-
-function StatCard({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <div className="font-['Bebas_Neue'] text-4xl sm:text-5xl text-[#3AAA35] tracking-wide mb-2">
-        {value}
-      </div>
-      <p className="text-[#B0BAC9] font-['Barlow'] text-sm sm:text-base">{label}</p>
-    </div>
   )
 }
 

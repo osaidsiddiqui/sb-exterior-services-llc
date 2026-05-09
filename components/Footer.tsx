@@ -2,33 +2,9 @@
 
 import React from "react"
 import Link from "next/link"
-import { Facebook, Tv } from "lucide-react"
-
-const SBLogoSmall = () => (
-  <svg
-    width="32"
-    height="32"
-    viewBox="0 0 100 100"
-    className="w-8 h-8"
-  >
-    <path
-      d="M 15 60 L 50 25 L 85 60"
-      stroke="#3AAA35"
-      strokeWidth="8"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M 30 60 L 50 40 L 70 60"
-      stroke="#1B3A6B"
-      strokeWidth="6"
-      fill="none"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-)
+import { Facebook } from "lucide-react"
+import { FaTiktok } from "react-icons/fa"
+import Image from "next/image"
 
 const Footer = () => {
   return (
@@ -38,13 +14,15 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand Section */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <SBLogoSmall />
-              <div>
-                <div className="font-['Bebas_Neue'] text-sm font-bold text-[#3AAA35] tracking-widest">SB EXTERIOR</div>
-                <div className="font-['Bebas_Neue'] text-xs text-[#3AAA35] tracking-wider">SERVICES LLC</div>
-              </div>
-            </div>
+            <Link href="/" className="flex items-center gap-3 mb-3 group w-fit">
+              <Image
+                src="https://cdn.builder.io/api/v1/image/assets%2F86d69472a8b84fc88a12f6a99124927a%2Ff74074879a9141cc8130ede8bd7e90e2?format=webp&width=800&height=1200"
+                alt="SB Exterior Services Logo"
+                width={40}
+                height={40}
+                className="w-10 h-10 object-contain"
+              />
+            </Link>
             <p className="text-[#B0BAC9] text-sm">Fully Insured. Serving Central Florida.</p>
           </div>
 
@@ -102,7 +80,7 @@ const Footer = () => {
                 className="text-[#3AAA35] hover:text-white transition-colors"
                 aria-label="TikTok"
               >
-                <Tv className="w-5 h-5" />
+                <FaTiktok className="w-5 h-5" />
               </a>
             </div>
           </div>

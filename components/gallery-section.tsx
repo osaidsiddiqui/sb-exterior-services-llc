@@ -4,7 +4,6 @@ import Link from "next/link"
 
 export function GallerySection() {
   const galleryItems = [
-    { src: "https://cdn.builder.io/api/v1/image/assets%2F306a1616036f465a99fac4fefda23c7d%2F6cd5cfd77e224857ae1fa098d97fd3b3", alt: "Before and after pressure washing", service: "House Washing" },
     { src: "https://cdn.builder.io/api/v1/image/assets%2F306a1616036f465a99fac4fefda23c7d%2F745fbb27e9854147841446cb65c8087c", alt: "Driveway cleaning results", service: "Driveway Cleaning" },
     { src: "https://cdn.builder.io/api/v1/image/assets%2F306a1616036f465a99fac4fefda23c7d%2F3dae89eb1c824d909d919dfd35a31918", alt: "Roof cleaning", service: "Roof Cleaning" },
     { src: "https://cdn.builder.io/api/v1/image/assets%2F306a1616036f465a99fac4fefda23c7d%2F4fdd4bc5e5f04e97803490947a5a7f15", alt: "Gutter cleaning", service: "Gutter Cleaning" },
