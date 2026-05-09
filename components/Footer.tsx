@@ -2,7 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
-import { Facebook, Tv } from "lucide-react"
+import { Facebook, Music } from "lucide-react"
 import Image from "next/image"
 
 const Footer = () => {
@@ -79,7 +79,7 @@ const Footer = () => {
                 className="text-[#3AAA35] hover:text-white transition-colors"
                 aria-label="TikTok"
               >
-                <Tv className="w-5 h-5" />
+                <Music className="w-5 h-5" />
               </a>
             </div>
           </div>
