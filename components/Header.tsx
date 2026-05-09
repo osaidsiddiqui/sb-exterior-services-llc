@@ -1,106 +1,143 @@
 "use client"
-import Image from "next/image"
 import Link from "next/link"
-import { Phone, ChevronDown } from "lucide-react"
+import { Phone, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { MobileNav } from "./mobile-nav"
+import { useState } from "react"
+
+const SBLogo = () => (
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 100 100"
+    className="w-10 h-10"
+  >
+    <defs>
+      <linearGradient id="roofGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#3AAA35" />
+        <stop offset="100%" stopColor="#3AAA35" />
+      </linearGradient>
+    </defs>
+    {/* Outer green chevron */}
+    <path
+      d="M 15 60 L 50 25 L 85 60"
+      stroke="#3AAA35"
+      strokeWidth="8"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    {/* Inner navy chevron */}
+    <path
+      d="M 30 60 L 50 40 L 70 60"
+      stroke="#1B3A6B"
+      strokeWidth="6"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)
 
 export const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "About", href: "/about" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Reviews", href: "/reviews" },
+    { name: "Contact", href: "/contact" },
+  ]
+
   return (
-    <header className="glass-card sticky top-0 z-50 border-b border-white/10">
-      <div className="container mx-auto px-6 py-2">
-        <div className="flex items-center justify-between h-[80px]">
-          {/* Logo Section */}
-          <div className="flex items-center space-x-4">
-            <Image
-              src="/images/jay's.png"
-              alt="Jay's EZ Junk Removal Logo"
-              width={130}
-              height={100}
-              className="w-[130px] h-[100px]"
-              priority
-              sizes="(max-width: 768px) 100vw, (min-width: 768px) 50vw"
-            />
-          </div>
+    <header className="sticky top-0 z-50 bg-[#0A0F1C]/95 backdrop-blur border-b border-[#3AAA35]/20">
+      <div className="container mx-auto px-4 sm:px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <SBLogo />
+            <div className="hidden sm:block">
+              <div className="font-['Bebas_Neue'] text-lg font-bold text-[#3AAA35] tracking-widest">SB</div>
+              <div className="font-['Bebas_Neue'] text-xs text-[#3AAA35] tracking-wider leading-none">
+                EXTERIOR SERVICES
+              </div>
+            </div>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {[
-              { name: "Home", href: "/" },
-              { name: "About Us", href: "/#about" },
-              { name: "Services", href: "/services" },
-              { name: "Contact Us", href: "/#contact" },
-            ].map((item, index) => (
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
               <Link
-                key={index}
-                href={item.href}
-                className="text-white hover:text-neon transition-colors font-medium relative group"
+                key={link.name}
+                href={link.href}
+                className="text-white hover:text-[#3AAA35] transition-colors font-['Barlow'] font-500 text-sm"
               >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon transition-all group-hover:w-full"></span>
+                {link.name}
               </Link>
             ))}
-
-       <DropdownMenu>
-  <DropdownMenuTrigger asChild>
-    <Button
-      variant="ghost"
-      className="text-white font-medium relative group px-4 py-2 rounded-xl h-auto 
-                 transition-all duration-300 hover:bg-white/10 hover:shadow-[0_0_10px_rgba(0,255,200,0.6)]"
-    >
-      Locations
-      <ChevronDown className="ml-2 h-4 w-4 transition-transform duration-300 group-data-[state=open]:rotate-180" />
-      {/* underline hover effect */}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neon transition-all duration-300 group-hover:w-full"></span>
-    </Button>
-  </DropdownMenuTrigger>
-
-  <DropdownMenuContent
-    className="bg-black/80 backdrop-blur-lg border border-neon/40 shadow-xl rounded-xl mt-2 p-2 
-               w-48 animate-in fade-in-0 zoom-in-95"
-  >
-    {[
-      { href: "/dallas", label: "Dallas" },
-      { href: "/red-oak", label: "Red Oak" },
-      { href: "/waxahachie", label: "Waxahachie" },
-    ].map((item, i) => (
-      <DropdownMenuItem asChild key={i}>
-        <Link
-          href={item.href}
-          className="flex items-center gap-2 text-white px-3 py-2 rounded-lg 
-                     transition-all duration-300 hover:bg-neon/20 hover:text-neon hover:translate-x-1"
-        >
-          <span className="w-2 h-2 rounded-full bg-neon/80"></span>
-          {item.label}
-        </Link>
-      </DropdownMenuItem>
-    ))}
-  </DropdownMenuContent>
-</DropdownMenu>
-
           </nav>
 
-          {/* Desktop Contact Button */}
-          <Button
-            asChild
-            className="hidden md:flex neon-gradient text-black hover:bg-black hover:text-neon border-2 border-transparent hover:border-neon font-bold text-lg px-8 py-4 rounded-full neon-glow-hover transition-all duration-300"
-          >
+          {/* Desktop Right Section */}
+          <div className="hidden lg:flex items-center gap-4">
             <a
-              href="tel:2142583511"
-              className="flex items-center text-lg"
-              style={{ position: "relative", padding: "20px" }}
+              href="tel:4075029795"
+              className="flex items-center gap-2 text-white hover:text-[#3AAA35] transition-colors"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              214-258-3511
+              <Phone className="w-4 h-4" />
+              <span className="text-sm font-['Barlow'] font-500">(407) 502-9795</span>
             </a>
-          </Button>
-
-          {/* Mobile Navigation */}
-          <div className="relative md:hidden z-50">
-            <MobileNav />
+            <Button
+              asChild
+              className="bg-[#3AAA35] hover:bg-[#4DC447] text-white font-['Barlow'] font-600 px-6 py-2 rounded text-sm uppercase tracking-wider"
+            >
+              <Link href="/contact">Get Free Estimate</Link>
+            </Button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden text-white hover:text-[#3AAA35] transition-colors"
+          >
+            {mobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden mt-4 pb-4 border-t border-[#3AAA35]/20">
+            <nav className="flex flex-col gap-4 mt-4">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-white hover:text-[#3AAA35] transition-colors font-['Barlow'] text-sm py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <a
+                href="tel:4075029795"
+                className="flex items-center gap-2 text-white hover:text-[#3AAA35] transition-colors py-2"
+              >
+                <Phone className="w-4 h-4" />
+                <span className="font-['Barlow'] text-sm">(407) 502-9795</span>
+              </a>
+              <Button
+                asChild
+                className="bg-[#3AAA35] hover:bg-[#4DC447] text-white font-['Barlow'] font-600 w-full py-2 rounded text-sm uppercase tracking-wider"
+              >
+                <Link href="/contact">Get Free Estimate</Link>
+              </Button>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   )

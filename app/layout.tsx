@@ -6,58 +6,52 @@ import "./globals.css"
 import SmoothScroll from "@/components/smooth-scroll"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://jaysezjunkremoval.com"),
+  metadataBase: new URL("https://sbexteriorservices.com"),
   title: {
-    default: "Jay's EZ Junk Removal | Junk Removal in Dallas, Red Oak & DFW",
-    template: "%s | Jay's EZ Junk Removal",
+    default: "SB Exterior Services LLC | Pressure Washing & Soft Washing Central Florida",
+    template: "%s | SB Exterior Services LLC",
   },
   icons: {
-    icon: "/images/favicon.png",
-    shortcut: "/images/favicon.png",
-    apple: "/images/favicon.png",
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
   },
   description:
-    "Same-day, affordable junk removal in Dallas, Red Oak & all of DFW. Eco-friendly, licensed & insured junk removal service. Call 214-258-3511 for FREE quote!",
+    "Professional pressure washing, soft washing, roof cleaning & driveway cleaning in Central Florida. Fully insured. Call (407) 502-9795 for a free estimate.",
   keywords: [
-    "junk removal Dallas TX",
-    "junk removal Red Oak TX",
-    "junk removal DFW",
-    "same-day junk removal Dallas",
-    "affordable junk removal Dallas",
-    "best junk removal Dallas",
-    "best junk removal Red Oak",
-    "junk hauling Dallas TX",
-    "junk hauling Red Oak TX",
-    "eco-friendly junk removal Dallas",
-    "yard waste removal Dallas",
-    "construction debris removal DFW",
-    "furniture removal Dallas",
-    "appliance removal Red Oak",
-    "Jay's EZ Junk Removal",
-    "jaysezjunkremoval",
-    "junk removal near me",
-    "cheap junk removal Dallas",
-    "professional junk haulers DFW",
-    "licensed junk removal Red Oak",
-    "insured junk removal Dallas",
+    "pressure washing Central Florida",
+    "soft washing Orlando",
+    "roof cleaning Florida",
+    "driveway cleaning",
+    "house washing services",
+    "pressure washing services",
+    "exterior cleaning Central Florida",
+    "gutter cleaning",
+    "commercial pressure washing",
+    "residential cleaning Florida",
+    "SB Exterior Services",
+    "pressure washing Orlando",
+    "soft wash roof cleaning",
+    "fully insured pressure washing",
+    "professional exterior cleaning",
   ],
-  authors: [{ name: "Jay's EZ Junk Removal Team" }],
-  creator: "Jay's EZ Junk Removal",
-  publisher: "Jay's EZ Junk Removal",
+  authors: [{ name: "SB Exterior Services LLC" }],
+  creator: "SB Exterior Services LLC",
+  publisher: "SB Exterior Services LLC",
   category: "Local Business Services",
-  classification: "Junk Removal Service",
+  classification: "Exterior Cleaning Service",
   openGraph: {
-    title: "Jay's EZ Junk Removal | Dallas, Red Oak & DFW",
+    title: "SB Exterior Services LLC | Pressure Washing & Soft Washing",
     description:
-      "Top-rated junk removal in Dallas, Red Oak & DFW. Same-day service, affordable prices, eco-friendly disposal. Call 214-258-3511 now!",
-    url: "https://jaysezjunkremoval.com",
-    siteName: "Jay's EZ Junk Removal",
+      "Professional pressure washing and soft washing in Central Florida. Fully insured, same-day quotes. Call (407) 502-9795 for your free estimate!",
+    url: "https://sbexteriorservices.com",
+    siteName: "SB Exterior Services LLC",
     images: [
       {
-        url: "/images/logowithblack.png",
+        url: "/sb-logo.png",
         width: 1200,
         height: 630,
-        alt: "Jay's EZ Junk Removal Dallas Red Oak DFW",
+        alt: "SB Exterior Services LLC - Pressure Washing Central Florida",
       },
     ],
     locale: "en_US",
@@ -65,10 +59,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jay's EZ Junk Removal | Dallas, Red Oak & DFW",
-    description: "Same-day, affordable junk removal services in Dallas, Red Oak & DFW. Call for FREE quote today!",
-    images: ["/images/logowithblack.png"],
-    creator: "@jaysezjunk",
+    title: "SB Exterior Services LLC | Pressure Washing & Soft Washing",
+    description: "Professional exterior cleaning services in Central Florida. Fully insured, same-day quotes available!",
+    images: ["/sb-logo.png"],
+    creator: "@washthis_",
   },
   robots: {
     index: true,
@@ -82,92 +76,81 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://jaysezjunkremoval.com",
-  },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
+    canonical: "https://sbexteriorservices.com",
   },
 }
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "Jay's EZ Junk Removal",
-  image: "https://jaysezjunkremoval.com/images/logowithblack.png",
-  "@id": "https://jaysezjunkremoval.com/#business",
-  url: "https://jaysezjunkremoval.com",
-  telephone: "+1-214-258-3511",
-  email: "Jayson@jaysezjunkremoval.com",
+  name: "SB Exterior Services LLC",
+  image: "https://sbexteriorservices.com/sb-logo.png",
+  "@id": "https://sbexteriorservices.com/#business",
+  url: "https://sbexteriorservices.com",
+  telephone: "+1-407-502-9795",
+  email: "sbexteriorservicesllc@gmail.com",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Dallas, TX",
-    addressLocality: "Dallas",
-    addressRegion: "TX",
-    postalCode: "75201",
+    streetAddress: "Central Florida",
+    addressLocality: "Orlando",
+    addressRegion: "FL",
     addressCountry: "US",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 32.7767,
-    longitude: -96.797,
+    latitude: 28.5421,
+    longitude: -81.369,
   },
   priceRange: "$$",
-  openingHours: "Mo-Fr 07:00-19:00, Sa 08:00-18:00, Su 09:00-17:00",
+  openingHours: "Mo-Su 07:00-18:00",
   sameAs: [
-    "https://www.facebook.com/jaysezjunk",
-    "https://www.instagram.com/jaysezjunk",
-    "https://www.google.com/maps/place/JAY'S+EZ+JUNK+REMOVAL",
+    "https://www.facebook.com/profile.php?id=61573931007454",
+    "https://www.tiktok.com/@washthis_",
   ],
   areaServed: [
-    { "@type": "Place", name: "Dallas, TX" },
-    { "@type": "Place", name: "Red Oak, TX" },
-    { "@type": "Place", name: "DFW, TX" },
-    { "@type": "Place", name: "Lancaster, TX" },
-    { "@type": "Place", name: "Ennis, TX" },
-    { "@type": "Place", name: "Waxahachie, TX" },
-    { "@type": "Place", name: "Cedar Hill, TX" },
-    { "@type": "Place", name: "Duncanville, TX" },
-    { "@type": "Place", name: "Arlington, TX" },
-    { "@type": "Place", name: "Grand Prairie, TX" },
+    { "@type": "Place", name: "Orlando, FL" },
+    { "@type": "Place", name: "Kissimmee, FL" },
+    { "@type": "Place", name: "Sanford, FL" },
+    { "@type": "Place", name: "Apopka, FL" },
+    { "@type": "Place", name: "Clermont, FL" },
+    { "@type": "Place", name: "Oviedo, FL" },
+    { "@type": "Place", name: "Winter Park, FL" },
   ],
   serviceType: [
-    "Junk Removal",
-    "Furniture Removal",
-    "Appliance Removal",
-    "Construction Debris Removal",
-    "Demolition Services",
-    "Dumpster Rental",
-    "Skid Steer Services",
-    "Property Cleanouts",
+    "Pressure Washing",
+    "Soft Washing",
+    "Roof Cleaning",
+    "Driveway Cleaning",
+    "Gutter Cleaning",
+    "House Washing",
+    "Commercial Cleaning",
   ],
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Junk Removal Services",
+    name: "Exterior Cleaning Services",
     itemListElement: [
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Same-Day Junk Removal",
-          description: "Fast same-day junk removal service across DFW",
+          name: "Pressure Washing",
+          description: "Professional high-pressure cleaning for driveways and concrete",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Furniture Removal",
-          description: "Professional furniture removal and disposal",
+          name: "Soft Washing",
+          description: "Gentle low-pressure cleaning for delicate surfaces",
         },
       },
       {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: "Appliance Removal",
-          description: "Safe appliance removal and eco-friendly disposal",
+          name: "Roof Cleaning",
+          description: "Safe roof cleaning using soft wash techniques",
         },
       },
     ],
@@ -175,7 +158,7 @@ const jsonLd = {
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "5.0",
-    reviewCount: "50",
+    reviewCount: "8",
     bestRating: "5",
     worstRating: "1",
   },
@@ -191,14 +174,15 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <meta name="theme-color" content="#00ff88" />
-        <meta name="msapplication-TileColor" content="#00ff88" />
+        <meta name="theme-color" content="#3AAA35" />
+        <meta name="msapplication-TileColor" content="#3AAA35" />
 
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 

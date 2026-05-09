@@ -10,6 +10,19 @@
 
 @layer base {
   :root {
+    --color-bg-primary: #0A0F1C;
+    --color-bg-secondary: #111827;
+    --color-bg-card: #1A2235;
+    --color-bg-card-hover: #1E2A40;
+    --color-accent-green: #3AAA35;
+    --color-accent-green-light: #4DC447;
+    --color-accent-navy: #1B3A6B;
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #B0BAC9;
+    --color-text-muted: #6B7A90;
+    --color-border: rgba(58, 170, 53, 0.15);
+    --color-border-hover: rgba(58, 170, 53, 0.4);
+
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
@@ -43,8 +56,8 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --neon-green: #00ff88;
-    --neon-green-dark: #00cc6a;
+    --neon-green: #3AAA35;
+    --neon-green-dark: #2D8429;
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.1);
   }

@@ -1,100 +1,132 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Phone, Trash2, Hammer, Truck, ArrowRight, Zap } from "lucide-react"
+import { Phone, ArrowRight, Star, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden h-auto py-10 md:py-16">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent"></div>
-      <div className="container mx-auto px-6 h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-10 items-center w-full">
-          {/* Left Side - Content */}
-          <div className="space-y-6">
-            <div className="space-y-3">
-              {/* Headline smaller */}
-              <h1 className="text-[20px] sm:text-[35px] lg:text-[50px] font-black leading-tight">
-                Junk Removal in <span className="text-neon">Dallas, Red Oak & DFW</span>
-              </h1>
-              <div className="text-[16px] sm:text-[20px] lg:text-[32px] font-bold text-neon">
-                Same-Day, Affordable Junk Removal Services
-              </div>
-              <p className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-lg leading-relaxed">
-                Jay's EZ Junk Removal offers fast, eco-friendly junk removal and demolition services across Dallas, Red
-                Oak & the entire DFW area. Reliable, affordable, and licensed professionals for residential and
-                commercial cleanouts.
-              </p>
+    <section className="relative overflow-hidden min-h-screen bg-[#0A0F1C] flex items-center py-20">
+      {/* Background texture */}
+      <div className="absolute inset-0 opacity-3" style={{
+        backgroundImage: 'linear-gradient(45deg, transparent 48%, #3AAA35 49%, #3AAA35 51%, transparent 52%)',
+        backgroundSize: '100px 100px',
+      }}></div>
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Content */}
+          <div className="space-y-8">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3">
+              <div className="h-1 w-8 bg-[#3AAA35]"></div>
+              <span className="font-['Barlow'] text-[#3AAA35] text-xs uppercase tracking-[0.2em] font-600">
+                Central Florida's Trusted Exterior Cleaning
+              </span>
             </div>
 
-            {/* Buttons */}
-<div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center items-center">
-  {/* Urgent Call Button */}
-  <Button
-    asChild
-    className="w-full sm:w-auto neon-gradient text-black border-2 border-transparent 
-               hover:border-neon font-bold text-base  py-3 sm:py-4 
-               rounded-full neon-glow-hover transition-all duration-300 
-               shadow-md hover:shadow-lg hover:scale-105"
-  >
-    <a
-      href="tel:2142583511"
-      className="flex items-center justify-center text-base"
-      style={{ position: "relative", padding: "4px 10px" }}
-    >
-      <Phone className="w-5 h-5 mr-2" />
-      Urgent Call for Junk Removal
-    </a>
-  </Button>
+            {/* Headline */}
+            <h1 className="font-['Bebas_Neue'] text-5xl sm:text-6xl lg:text-7xl text-white leading-tight tracking-tight">
+              Pressure Washing & Soft Washing That Lasts
+            </h1>
 
-  {/* Free Estimate Button */}
-  <Button
-    asChild
-    className="w-full sm:w-auto glass-card text-white border border-neon 
-               font-bold text-base px-6 py-3 sm:px-8 sm:py-4 rounded-full 
-               transition-all duration-300 shadow-md hover:shadow-lg 
-               hover:scale-105 hover:neon-gradient hover:text-black"
-  >
-    <Link href="#contact" className="flex items-center justify-center">
-      <ArrowRight className="w-5 h-5 mr-2" />
-      Get Free Estimate
-    </Link>
-  </Button>
-</div>
+            {/* Subheadline */}
+            <p className="font-['Barlow'] text-lg text-[#B0BAC9] max-w-lg leading-relaxed">
+              Professional exterior cleaning services for homes and businesses across Central Florida. Fully insured. Same-day quotes available.
+            </p>
 
+            {/* Trust Badges */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex items-center gap-2 text-[#B0BAC9]">
+                <CheckCircle2 className="w-5 h-5 text-[#3AAA35]" />
+                <span className="font-['Barlow'] text-sm">Fully Insured</span>
+              </div>
+              <div className="flex items-center gap-2 text-[#B0BAC9]">
+                <CheckCircle2 className="w-5 h-5 text-[#3AAA35]" />
+                <span className="font-['Barlow'] text-sm">Same-Day Quotes</span>
+              </div>
+              <div className="flex items-center gap-2 text-[#B0BAC9]">
+                <CheckCircle2 className="w-5 h-5 text-[#3AAA35]" />
+                <span className="font-['Barlow'] text-sm">5-Star Rated</span>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <Button
+                asChild
+                className="bg-[#3AAA35] hover:bg-[#4DC447] text-white font-['Barlow'] font-600 px-8 py-3 rounded text-base uppercase tracking-wider transition-all"
+              >
+                <Link href="/contact">Get a Free Estimate</Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                className="border border-[#3AAA35] text-[#3AAA35] hover:bg-[#3AAA35] hover:text-white font-['Barlow'] font-600 px-8 py-3 rounded text-base uppercase tracking-wider transition-all"
+              >
+                <Link href="/gallery">View Our Work</Link>
+              </Button>
+            </div>
+
+            {/* Rating Card */}
+            <div className="bg-[#1A2235] border border-[#3AAA35]/20 rounded-lg p-4 w-fit mt-8">
+              <div className="flex items-center gap-3">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-[#3AAA35] text-[#3AAA35]" />
+                  ))}
+                </div>
+                <span className="font-['Barlow'] font-600 text-white">4.9★</span>
+                <span className="text-[#6B7A90] text-sm">30+ Happy Customers</span>
+              </div>
+            </div>
           </div>
 
-          {/* Right Side - Visual Elements */}
-          <div className="relative">
-            <div className="grid grid-cols-2 gap-5">
-              <Card className="glass-card p-4 sm:p-5 animate-float">
-                <CardContent className="p-0 text-center">
-                  <Trash2 className="w-8 sm:w-10 h-8 sm:h-10 text-neon mx-auto mb-3" />
-                  <h3 className="font-bold text-white mb-1 text-[14px] sm:text-[16px]">Junk Removal Dallas, TX</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Complete cleanouts</p>
-                </CardContent>
-              </Card>
-              <Card className="glass-card p-4 sm:p-5 animate-float delay-200">
-                <CardContent className="p-0 text-center">
-                  <Hammer className="w-8 sm:w-10 h-8 sm:h-10 text-neon mx-auto mb-3" />
-                  <h3 className="font-bold text-white mb-1 text-[14px] sm:text-[16px]">Demolition Services DFW</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Professional demo</p>
-                </CardContent>
-              </Card>
-              <Card className="glass-card p-4 sm:p-5 animate-float delay-400">
-                <CardContent className="p-0 text-center">
-                  <Truck className="w-8 sm:w-10 h-8 sm:h-10 text-neon mx-auto mb-3" />
-                  <h3 className="font-bold text-white mb-1 text-[14px] sm:text-[16px]">Dumpster Rental Red Oak</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Drop-off & pickup</p>
-                </CardContent>
-              </Card>
-              <Card className="glass-card p-4 sm:p-5 animate-float delay-600">
-                <CardContent className="p-0 text-center">
-                  <Zap className="w-8 sm:w-10 h-8 sm:h-10 text-neon mx-auto mb-3" />
-                  <h3 className="font-bold text-white mb-1 text-[14px] sm:text-[16px]">Skid Steer Services Dallas</h3>
-                  <p className="text-gray-300 text-xs sm:text-sm">Heavy-duty work</p>
+          {/* Right - Visual */}
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="relative">
+              {/* Large stats card */}
+              <Card className="bg-[#1A2235] border-[#3AAA35]/30 shadow-xl">
+                <CardContent className="p-8">
+                  <div className="space-y-6">
+                    <div>
+                      <div className="font-['Bebas_Neue'] text-5xl text-[#3AAA35] tracking-wide">100+</div>
+                      <p className="text-[#B0BAC9] font-['Barlow'] text-sm mt-2">Jobs Completed</p>
+                    </div>
+                    <div className="h-px bg-[#3AAA35]/30"></div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <div className="font-['Bebas_Neue'] text-5xl text-[#3AAA35] tracking-wide">5★</div>
+                      </div>
+                      <p className="text-[#B0BAC9] font-['Barlow'] text-sm mt-2">Average Rating</p>
+                    </div>
+                    <div className="h-px bg-[#3AAA35]/30"></div>
+                    <div>
+                      <div className="font-['Bebas_Neue'] text-5xl text-[#3AAA35] tracking-wide">3+</div>
+                      <p className="text-[#B0BAC9] font-['Barlow'] text-sm mt-2">Years Experience</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+          <div className="animate-bounce">
+            <svg
+              className="w-6 h-6 text-[#3AAA35] mx-auto"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 14l-7 7m0 0l-7-7m7 7V3"
+              />
+            </svg>
           </div>
         </div>
       </div>

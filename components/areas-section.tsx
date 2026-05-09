@@ -1,44 +1,42 @@
-import { Card } from "@/components/ui/card"
 import { MapPin } from "lucide-react"
 
 export function AreasSection() {
   const areas = [
-    "Red Oak, TX",
-    "Lancaster, TX",
-    "Ennis, TX",
-    "Waxahachie, TX",
-    "Dallas, TX",
-    "Cedar Hill, TX",
-    "Duncanville, TX",
-    "Wilmer, TX",
-    "Arlington, TX",
-    "Grand Prairie, TX",
-    "All of DFW",
+    "Orlando, FL",
+    "Kissimmee, FL",
+    "Sanford, FL",
+    "Apopka, FL",
+    "Clermont, FL",
+    "Oviedo, FL",
+    "Winter Park, FL",
+    "All of Central Florida",
   ]
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-6">
-        <Card className="glass-card p-12 rounded-3xl">
-          <div className="text-center mb-8">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Areas We <span className="text-neon">Serve</span>
-            </h2>
-            <p className="text-xl text-gray-300">Proudly serving the entire DFW metroplex</p>
-          </div>
+    <section className="py-20 bg-[#111827] border-t border-[#3AAA35]/20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-16">
+          <h2 className="font-['Bebas_Neue'] text-5xl text-white mb-4 tracking-tight">
+            Areas We Serve
+          </h2>
+          <p className="font-['Barlow'] text-lg text-[#B0BAC9] max-w-2xl mx-auto">
+            Proudly serving the entire Central Florida region
+          </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 text-center">
-            {areas.map((area, index) => (
-              <div
-                key={index}
-                className="glass-card p-4 rounded-xl border border-neon/20 hover:border-neon transition-colors"
-              >
-                <MapPin className="w-5 h-5 text-neon mx-auto mb-2" />
-                <span className="text-white font-medium">{area}</span>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {areas.map((area, index) => (
+            <div
+              key={index}
+              className="bg-[#0A0F1C] border border-[#3AAA35]/20 hover:border-[#3AAA35]/60 rounded-lg p-4 text-center transition-all hover:bg-[#1A2235]"
+            >
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <MapPin className="w-5 h-5 text-[#3AAA35]" />
+                <span className="text-white font-['Barlow'] font-500">{area}</span>
               </div>
-            ))}
-          </div>
-        </Card>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
