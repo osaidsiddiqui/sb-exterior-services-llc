@@ -6,6 +6,23 @@ import Link from "next/link"
 export function HeroSection() {
   return (
     <section className="relative overflow-hidden min-h-screen bg-[#0A0F1C] flex items-center py-20">
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source
+          src="https://cdn.builder.io/o/assets%2F86d69472a8b84fc88a12f6a99124927a%2Fd57152676c9a44e2aa8a8c91d08c3adb?alt=media&token=bc449269-e962-45b1-9d76-40e807165464&apiKey=86d69472a8b84fc88a12f6a99124927a"
+          type="video/mp4"
+        />
+      </video>
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
       {/* Background texture */}
       <div className="absolute inset-0 opacity-3" style={{
         backgroundImage: 'linear-gradient(45deg, transparent 48%, #3AAA35 49%, #3AAA35 51%, transparent 52%)',
