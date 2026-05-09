@@ -37,7 +37,7 @@ export function HeroSection() {
             alt="Pressure washing service"
             fill
             className={`object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? "opacity-100" : "opacity-0"
+              index === currentImageIndex ? "opacity-50" : "opacity-0"
             }`}
             priority={index === 0}
           />
