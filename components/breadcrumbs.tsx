@@ -19,13 +19,13 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://jaysezjunkremoval.com",
+        item: "https://sbexteriorservices.com",
       },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         position: index + 2,
         name: item.label,
-        item: item.href ? `https://jaysezjunkremoval.com${item.href}` : undefined,
+        item: item.href ? `https://sbexteriorservices.com${item.href}` : undefined,
       })),
     ],
   }

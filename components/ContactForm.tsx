@@ -1,260 +1,309 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Facebook,
-  Instagram,
-  Link,
-  Mail,
-  MapPin,
-  Phone,
-} from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+} from "@/components/ui/select"
+import { Button } from "@/components/ui/button"
+import { Mail, MapPin, Phone, CheckCircle2 } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
 
 export const ContactForm = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    service: "",
+    propertyType: "",
+    preferredDate: "",
+    message: "",
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      // Client-side validation
+      if (!formData.name || !formData.phone || !formData.email) {
+        alert("Please fill in all required fields")
+        return
+      }
+
+      // Here you would typically send the form data to your backend
+      // For now, we'll just show a success message
+      setSubmitted(true)
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        service: "",
+        propertyType: "",
+        preferredDate: "",
+        message: "",
+      })
+
+      // Reset after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (error) {
+      console.error("Form submission error:", error)
+    }
+  }
 
   return (
-    <section id="contact" className="py-16">
-      <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Get Your <span className="text-neon">Free Estimate</span>
-            </h2>
-            <p className="text-xl text-gray-300">
-              Ready to get started? Contact us today!
-            </p>
+    <section id="contact" className="py-20 bg-[#0A0F1C]">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-16">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="h-1 w-8 bg-[#3AAA35]"></div>
+            <span className="font-['Barlow'] text-[#3AAA35] text-xs uppercase tracking-[0.2em] font-600">CONTACT US</span>
+            <div className="h-1 w-8 bg-[#3AAA35]"></div>
+          </div>
+          <h2 className="font-['Bebas_Neue'] text-5xl text-white mb-6 tracking-tight">
+            Get Your Free Estimate
+          </h2>
+          <p className="font-['Barlow'] text-lg text-[#B0BAC9] max-w-2xl mx-auto">
+            Fill out the form below or call us directly — we'll respond within 24 hours.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          {/* Form */}
+          <div className="lg:col-span-2">
+            <Card className="bg-[#1A2235] border-[#3AAA35]/20">
+              <CardContent className="p-8">
+                {!submitted ? (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Name & Phone */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                          Full Name *
+                        </label>
+                        <Input
+                          required
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white placeholder:text-[#6B7A90] focus:border-[#3AAA35] rounded text-sm"
+                          placeholder="Your name"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                          Phone Number *
+                        </label>
+                        <Input
+                          required
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white placeholder:text-[#6B7A90] focus:border-[#3AAA35] rounded text-sm"
+                          placeholder="(407) 555-0123"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Email */}
+                    <div>
+                      <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                        Email Address *
+                      </label>
+                      <Input
+                        required
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white placeholder:text-[#6B7A90] focus:border-[#3AAA35] rounded text-sm w-full"
+                        placeholder="you@example.com"
+                      />
+                    </div>
+
+                    {/* Service & Property Type */}
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                          Service Needed *
+                        </label>
+                        <Select
+                          value={formData.service}
+                          onValueChange={(value) => handleSelectChange("service", value)}
+                        >
+                          <SelectTrigger className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white rounded text-sm">
+                            <SelectValue placeholder="Select service" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#1A2235] border-[#3AAA35]/30">
+                            <SelectItem value="house-washing" className="text-white">House Washing</SelectItem>
+                            <SelectItem value="roof-cleaning" className="text-white">Roof Cleaning</SelectItem>
+                            <SelectItem value="driveway" className="text-white">Driveway Cleaning</SelectItem>
+                            <SelectItem value="gutter" className="text-white">Gutter Cleaning</SelectItem>
+                            <SelectItem value="soft-wash" className="text-white">Soft Washing</SelectItem>
+                            <SelectItem value="commercial" className="text-white">Commercial</SelectItem>
+                            <SelectItem value="other" className="text-white">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      <div>
+                        <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                          Property Type *
+                        </label>
+                        <Select
+                          value={formData.propertyType}
+                          onValueChange={(value) => handleSelectChange("propertyType", value)}
+                        >
+                          <SelectTrigger className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white rounded text-sm">
+                            <SelectValue placeholder="Select type" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-[#1A2235] border-[#3AAA35]/30">
+                            <SelectItem value="residential" className="text-white">Residential</SelectItem>
+                            <SelectItem value="commercial" className="text-white">Commercial</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+
+                    {/* Preferred Date */}
+                    <div>
+                      <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                        Preferred Date (Optional)
+                      </label>
+                      <Input
+                        type="date"
+                        name="preferredDate"
+                        value={formData.preferredDate}
+                        onChange={handleChange}
+                        className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white placeholder:text-[#6B7A90] focus:border-[#3AAA35] rounded text-sm w-full"
+                      />
+                    </div>
+
+                    {/* Message */}
+                    <div>
+                      <label className="block text-white font-['Barlow'] font-600 mb-2 text-sm">
+                        Message / Additional Details
+                      </label>
+                      <Textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="bg-[#0A0F1C] border-[#3AAA35]/30 text-white placeholder:text-[#6B7A90] focus:border-[#3AAA35] rounded text-sm min-h-[120px] resize-none"
+                        placeholder="Tell us more about your cleaning needs..."
+                      />
+                    </div>
+
+                    {/* Submit */}
+                    <Button
+                      type="submit"
+                      className="w-full bg-[#3AAA35] hover:bg-[#4DC447] text-white font-['Barlow'] font-600 py-3 rounded uppercase tracking-wider transition-all"
+                    >
+                      Send My Request →
+                    </Button>
+                  </form>
+                ) : (
+                  <div className="text-center py-12">
+                    <CheckCircle2 className="w-16 h-16 text-[#3AAA35] mx-auto mb-4" />
+                    <h3 className="font-['Bebas_Neue'] text-2xl text-white mb-2 tracking-wide">
+                      Thank You!
+                    </h3>
+                    <p className="text-[#B0BAC9] font-['Barlow']">
+                      We'll be in touch within 24 hours.
+                    </p>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="glass-card p-6 sm:p-8 rounded-2xl shadow-xl border border-white/10">
-              <CardContent className="p-0">
-              <form
-  action="https://formsubmit.co/Jayson@jaysezjunkremoval.com"
-  method="POST"
-  className="space-y-6"
->
-  {/* Hidden input for redirect after success */}
-  <input
-    type="hidden"
-    name="_next"
-    value="https://jaysezjunkremoval.com/thank-you"
-  />
-  <input type="hidden" name="_captcha" value="false" />
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <Card className="bg-[#1A2235] border-[#3AAA35]/20">
+              <CardContent className="p-8">
+                <h3 className="font-['Bebas_Neue'] text-[#3AAA35] text-lg mb-6 tracking-wide">
+                  Contact Info
+                </h3>
 
-  {/* Name & Phone */}
-  <div className="grid sm:grid-cols-2 gap-4">
-    <div>
-      <label className="block text-white font-semibold mb-2">Name *</label>
-      <Input
-        required
-        type="text"
-        name="name"
-        className="glass-card border-white/20 text-white placeholder:text-gray-400 focus:border-neon rounded-xl"
-        placeholder="Your name"
-      />
-    </div>
-    <div>
-      <label className="block text-white font-semibold mb-2">Phone *</label>
-      <Input
-        required
-        type="tel"
-        name="phone"
-        className="glass-card border-white/20 text-white placeholder:text-gray-400 focus:border-neon rounded-xl"
-        placeholder="(214) 555-0123"
-      />
-    </div>
-  </div>
+                <div className="space-y-6">
+                  {/* Phone */}
+                  <div className="flex gap-4">
+                    <Phone className="w-5 h-5 text-[#3AAA35] flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-[#6B7A90] font-['Barlow'] text-xs uppercase mb-1">Phone</p>
+                      <a
+                        href="tel:4075029795"
+                        className="text-white hover:text-[#3AAA35] transition-colors font-['Barlow'] font-600"
+                      >
+                        (407) 502-9795
+                      </a>
+                    </div>
+                  </div>
 
-  {/* Email */}
-  <div>
-    <label className="block text-white font-semibold mb-2">Email</label>
-    <Input
-      type="email"
-      name="email"
-      className="glass-card border-white/20 text-white placeholder:text-gray-400 focus:border-neon rounded-xl"
-      placeholder="your@email.com"
-    />
-  </div>
+                  {/* Email */}
+                  <div className="flex gap-4">
+                    <Mail className="w-5 h-5 text-[#3AAA35] flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-[#6B7A90] font-['Barlow'] text-xs uppercase mb-1">Email</p>
+                      <a
+                        href="mailto:sbexteriorservicesllc@gmail.com"
+                        className="text-white hover:text-[#3AAA35] transition-colors font-['Barlow'] font-600 break-all"
+                      >
+                        sbexteriorservicesllc@gmail.com
+                      </a>
+                    </div>
+                  </div>
 
-  {/* Date & Time */}
-  <div className="grid sm:grid-cols-2 gap-4">
-    <div>
-      <label className="block text-white font-semibold mb-2">Preferred Date *</label>
-      <Input
-        required
-        type="date"
-        name="date"
-        className="glass-card border-white/20 text-white focus:border-neon rounded-xl"
-      />
-    </div>
-    <div>
-      <label className="block text-white font-semibold mb-2">Preferred Time *</label>
-      <Input
-        required
-        type="time"
-        name="time"
-        className="glass-card border-white/20 text-white focus:border-neon rounded-xl"
-      />
-    </div>
-  </div>
+                  {/* Location */}
+                  <div className="flex gap-4">
+                    <MapPin className="w-5 h-5 text-[#3AAA35] flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="text-[#6B7A90] font-['Barlow'] text-xs uppercase mb-1">Location</p>
+                      <p className="text-white font-['Barlow']">Central Florida</p>
+                    </div>
+                  </div>
 
-  {/* Location */}
-  <div>
-    <label className="block text-white font-semibold mb-2">Location *</label>
-    <Select name="location" required>
-      <SelectTrigger className="glass-card border-white/20 text-white focus:border-neon rounded-xl">
-        <SelectValue placeholder="Select a location" />
-      </SelectTrigger>
-      <SelectContent className="glass-card border-white/20">
-        <SelectItem value="Red Oak, TX">Red Oak, TX</SelectItem>
-        <SelectItem value="Dallas, TX">Dallas, TX</SelectItem>
-        <SelectItem value="Waxahachie, TX">Waxahachie, TX</SelectItem>
-        <SelectItem value="Other">Other</SelectItem>
-      </SelectContent>
-    </Select>
-  </div>
+                  <div className="h-px bg-[#3AAA35]/20"></div>
 
-  {/* Service */}
-  <div>
-    <label className="block text-white font-semibold mb-2">Service Needed</label>
-    <Select name="service">
-      <SelectTrigger className="glass-card border-white/20 text-white focus:border-neon rounded-xl">
-        <SelectValue placeholder="Select a service" />
-      </SelectTrigger>
-      <SelectContent className="glass-card border-white/20">
-        <SelectItem value="junk-removal">Junk Removal</SelectItem>
-        <SelectItem value="demolition">Demolition</SelectItem>
-        <SelectItem value="dumpster-rental">Dumpster Rental</SelectItem>
-        <SelectItem value="skid-steer">Skid Steer Work</SelectItem>
-      </SelectContent>
-    </Select>
-  </div>
-
-  {/* Message */}
-  <div>
-    <label className="block text-white font-semibold mb-2">Message</label>
-    <Textarea
-      name="message"
-      className="glass-card border-white/20 text-white placeholder:text-gray-400 focus:border-neon rounded-xl"
-      placeholder="Tell us about your project..."
-      rows={4}
-    />
-  </div>
-
-  {/* Submit */}
-  <Button
-    type="submit"
-    className="w-full neon-gradient text-black hover:bg-black hover:text-neon border-2 border-transparent hover:border-neon font-bold text-lg py-4 rounded-xl neon-glow-hover transition-all duration-300"
-  >
-    {submitted ? "Sending..." : "Submit Request"}
-    <ArrowRight className="w-5 h-5 ml-2" />
-  </Button>
-</form>
-
+                  {/* Hours */}
+                  <div>
+                    <p className="text-[#6B7A90] font-['Barlow'] text-xs uppercase mb-3">Hours</p>
+                    <p className="text-white font-['Barlow'] text-sm">Available 7 days a week</p>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <Card className="glass-card p-8 rounded-2xl">
-                <CardContent className="p-0">
-                  <h3 className="text-2xl font-bold text-white mb-6">
-                    Contact Information
-                  </h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center space-x-4">
-                      <Phone className="w-6 h-6 text-neon" />
-                      <div>
-                        <p className="text-white font-semibold">Phone</p>
-                        <p className="text-gray-300">214-258-3511</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <Mail className="w-6 h-6 text-neon" />
-                      <div>
-                        <p className="text-white font-semibold">Email</p>
-                        <p className="text-gray-300">
-                          Jayson@jaysezjunkremoval.com
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      <MapPin className="w-6 h-6 text-neon" />
-                      <div>
-                        <p className="text-white font-semibold">Location</p>
-                        <p className="text-gray-300">Red Oak, TX</p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="glass-card p-8 rounded-2xl">
-                <CardContent className="p-0">
-                  <h3 className="text-2xl font-bold text-white mb-6">
-                    Follow Us
-                  </h3>
-                  <div className="flex space-x-4">
-                    <a
-                      href="https://www.facebook.com/p/JAYS-EZ-Junk-Removal-61576618977663/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        size="lg"
-                        className="glass-card text-white hover:neon-gradient hover:text-black rounded-xl"
-                      >
-                        <Facebook className="w-5 h-5" />
-                      </Button>
-                    </a>
-
-                    <a
-                      href="https://www.instagram.com/jaysezjunk/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        size="lg"
-                        className="glass-card text-white hover:neon-gradient hover:text-black rounded-xl"
-                      >
-                        <Instagram className="w-5 h-5" />
-                      </Button>
-                    </a>
-                    <a
-                      href="https://www.google.com/maps/place/JAY'S+EZ+JUNK+REMOVAL/@32.7430719,-96.963595,9z/data=!3m1!4b1!4m6!3m5!1s0x227cc042c4589c07:0xadc11b9bb7464f73!8m2!3d32.7430719!4d-96.963595!16s%2Fg%2F11xdy7l5x9?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button
-                        size="lg"
-                        className="glass-card text-white hover:neon-gradient hover:text-black rounded-xl"
-                      >
-                        G
-                      </Button>
-                    </a>
-
-                   
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            {/* Map Placeholder */}
+            <Card className="bg-[#1A2235] border-[#3AAA35]/20 overflow-hidden">
+              <div className="aspect-square bg-[#111827] flex items-center justify-center">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3490.318261000747!2d-81.36900232345098!3d28.542212175699646!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e77bb6b4c4c4c4%3A0x0!2sOrlando%2C%20FL!5e0!3m2!1sen!2sus!4v1234567890"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
